@@ -17,6 +17,9 @@ public class Pizza {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@NotNull
+	private String nome;
+	
 	@Lob
 	private String descrizione;
 	
@@ -32,6 +35,14 @@ public class Pizza {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public String getDescrizione() {
