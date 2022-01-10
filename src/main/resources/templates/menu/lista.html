@@ -8,22 +8,21 @@
 	<div class="container-fluid bg-danger pt-4 pb-5"></div>
 </header>
 <body>
-	<div class="mx-2">
-		<h1>Le nostre pizze</h1>
-	</div>
 	<div class="container">
+		<h1>Le nostre pizze</h1>
+			<hr>
 		<table class="table table-borderless">
 			<tbody>
 				<tr th:each="item : ${pizza}">
-					<td th:text="${item.nome}" class="border"></td>
-					<td th:text="${item.descrizione}" class="border"></td>  
-					<td th:text="${item.prezzo}" class="border"></td>   
+					<td th:text="${item.nome}"></td>
+					<td th:text="${item.descrizione}"></td>  
+					<td th:text="${item.prezzo}"></td>   
 				</tr>
 			</tbody>
 		</table>
 		<div>
-			 	<a class="btn btn-danger" th:href="@{/menu/aggiungipizza}">Aggiungi pizza</a>
-			 </div>
+			 <a class="btn btn-danger" th:href="@{/menu/aggiungipizza}">Aggiungi pizza</a>
+		</div>
 	</div>
 		
 <div th:replace="/fragments/resources :: scripts"></div>

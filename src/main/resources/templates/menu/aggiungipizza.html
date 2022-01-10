@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <div th:replace="/fragments/resources :: headTags"></div>
+    <title>Aggiungi pizza</title>
+</head>
+<header>
+	<div class="container-fluid bg-danger pt-4 pb-5"></div>
+</header>
+<body>
+    <div class="container">
+		<h1>Aggiungi nuova pizza</h1>
+		<hr>
+		<form id="pizza-form" 
+			 th:object="${pizza}" 
+			 th:action="@{/menu/aggiungipizza}" 
+			 method="post"
+			 >
+			 <div class="row gy-2">
+			 	<div class="col-12">
+			 		<label class="form-label" for="title">Nome</label>
+			 		<input type="text" class="form-control" id="title" th:field="*{nome}">
+			 	</div>
+                 <div class="col-12">
+                    <label class="form-label" for="descrizione">Descrizione</label>
+                    <textarea class="form-control" id="descrizione" th:field="*{descrizione}" rows="4"></textarea>
+                </div>
+			 	<div class="col-12">
+			 		<label class="form-label" for="prezzo">Prezzo</label>
+			 		<input type="text" class="form-control" id="prezzo" th:field="*{prezzo}">
+			 	</div>
+			 	<div class="col-12">
+			 		<button class="btn btn-danger" type="submit">Salva</button>
+			 	</div>
+			 </div>	
+		</form>
+	</div>
+	<div th:replace="/fragments/resources :: scripts"></div>
+	</body>		
+</html>	 

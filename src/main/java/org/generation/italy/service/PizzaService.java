@@ -16,4 +16,8 @@ public class PizzaService {
 	public List<Pizza> findAll(){
 		return repository.findAll();
 	}
+	
+	public Pizza salva(Pizza pizza) {
+		return repository.save(pizza);
+	}
 }
