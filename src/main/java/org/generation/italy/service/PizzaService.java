@@ -20,4 +20,8 @@ public class PizzaService {
 	public Pizza salva(Pizza pizza) {
 		return repository.save(pizza);
 	}
+	
+	public void cancellaConId(Integer id) {
+		repository.deleteById(id);
+	}
 }

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <div th:replace="/fragments/resources :: headTags"></div>
+    <title th:text="${pizza.nome}"></title> <!-- come mettere titolo dinamico -->
+</head>
+<header>
+	<div class="container-fluid bg-danger pt-4 pb-5"></div>
+</header>
+<body>
+	<div class="container" th:object="${pizza}">
+		<h1 th:text="*{nome}"></h1>
+		<div class="row">
+			<div class="col-8">
+				<dl>
+					<dt>Descrizione pizza</dt>
+					<dd th:text="*{descrizione}"></dd>
+					<dt>Prezzo</dt>
+					<dd th:text="*{prezzo}"></dd>
+				</dl>
+			</div>	
+			<div class="col-4">
+				<h2>Ingredienti</h2>
+				<ul class="list-unstiled">
+					<li th:each="ingrediente: *{ingredienti}" th:text=${ingrediente.ingredienti}></li>
+				</ul>
+			</div>	
+		</div>
+	</div>
+</body>

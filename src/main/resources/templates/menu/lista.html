@@ -12,16 +12,28 @@
 		<h1>Le nostre pizze</h1>
 			<hr>
 		<table class="table table-borderless">
+				<thead>
+					<tr>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
 			<tbody>
 				<tr th:each="item : ${pizza}">
 					<td th:text="${item.nome}"></td>
-					<td th:text="${item.descrizione}"></td>  
+					<td th:text="${item.ingredientiToString()}"></td>  
 					<td th:text="${item.prezzo}"></td>   
+					<td>
+					<a class="btn btn-danger" th:href="@{/}"><i class="fas fa-pencil-alt"></i></a>
+					<a class="btn btn-danger" th:href="@{|/menu/cancella/${item.id}|}"><i class="fas fa-trash-alt"></i></a>
+					</td>
 				</tr>
 			</tbody>
 		</table>
 		<div>
-			 <a class="btn btn-danger" th:href="@{/menu/aggiungipizza}">Aggiungi pizza</a>
+			 <a class="btn btn-danger" th:href="@{/menu/aggiungipizza}"><i class="fas fa-plus"></i></a>
 		</div>
 	</div>
 		
