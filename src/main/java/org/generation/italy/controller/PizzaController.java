@@ -41,6 +41,19 @@ public class PizzaController {
 		return "redirect:/menu";
 	}
 	
+	@GetMapping("/modifica/{id}")
+	public String modifica(@PathVariable("id") Integer id, Model model) {
+		model.addAttribute("pizza", service.getById(id));
+		model.addAttribute("ingredienti", ingredientiService.findAllSortByIngredienti());
+		return "/menu/aggiungipizza";
+	}
+	
+	@PostMapping("/modifica/{id}")
+	public String confermaModifica(@ModelAttribute("pizza") Pizza formPizza, Model model) {
+		service.modifica(formPizza);
+		return "redirect:/menu";
+	}
+	
 	@GetMapping("/cancella/{id}")
 	public String doCancella(Model model, @PathVariable("id") Integer id) {
 		service.cancellaConId(id);

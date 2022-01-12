@@ -21,6 +21,14 @@ public class PizzaService {
 		return repository.save(pizza);
 	}
 	
+	public Pizza getById(Integer id) {
+		return repository.getById(id);
+	}
+	
+	public Pizza modifica(Pizza pizza) {
+		return repository.save(pizza);
+	}
+	
 	public void cancellaConId(Integer id) {
 		repository.deleteById(id);
 	}
