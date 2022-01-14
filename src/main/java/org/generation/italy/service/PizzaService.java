@@ -17,6 +17,10 @@ public class PizzaService {
 		return repository.findAll();
 	}
 	
+	public List<Pizza> findByKeyword(String keyword){
+		return repository.findByNomeContainingIgnoreCase(keyword);
+	}
+	
 	public Pizza salva(Pizza pizza) {
 		return repository.save(pizza);
 	}

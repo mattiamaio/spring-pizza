@@ -1,5 +1,7 @@
 package org.generation.italy.controller;
 
+import java.util.List;
+
 import org.generation.italy.model.Pizza;
 import org.generation.italy.service.IngredientiService;
 import org.generation.italy.service.PizzaService;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/menu")
@@ -23,8 +26,15 @@ public class PizzaController {
 	private IngredientiService ingredientiService;
 	
 	@GetMapping
-	public String list(Model model) {
-		model.addAttribute("pizza", service.findAll());
+	public String list(Model model, @RequestParam(name="keyword", required=false) String keyword ) {
+		List<Pizza> risultato;
+		if(keyword != null && !keyword.isEmpty()) {
+			risultato = service.findByKeyword(keyword);
+			model.addAttribute("keyword", keyword);
+		} else {
+			risultato = service.findAll();
+		}
+		model.addAttribute("pizza", risultato);
 		return "/menu/lista";
 	}
 	

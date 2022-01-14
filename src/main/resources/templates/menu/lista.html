@@ -9,8 +9,17 @@
 </header>
 <body>
 	<div class="container">
-		<h1>Le nostre pizze</h1>
+		<h1 class="text-center">Le nostre pizze</h1>
 		<hr>
+		<div class="mb-3 d-flex justify-content-between">
+			<a class="btn btn-danger" th:href="@{/menu/aggiungipizza}"><i class="fas fa-plus"></i> Aggiungi pizza</a>
+			<form th:action="@{/menu}" method="get">
+			      <div class="input-group">
+			        <input name="keyword" th:value="${keyword}" class="form-control" type="search" placeholder="Trova" aria-label="Search">
+			        <button class="btn btn-danger" type="submit"><i class="fas fa-search"></i></button>
+			     </div>
+			</form>			
+		</div>
         <div class="row" th:each="item : ${pizza}">
 	        <div class="col gy-2 d-inline" th:text="${item.nome}"></div>
 	        <div class="col gy-2 d-inline" th:text="${item.ingredientiToString()}"></div>
@@ -20,9 +29,7 @@
 		        <a class="btn btn-danger" th:href="@{|/menu/cancella/${item.id}|}"><i class="fas fa-trash-alt"></i></a>
 	        </div>
     </div>
-		<div>
-			 <a class="btn btn-danger" th:href="@{/menu/aggiungipizza}"><i class="fas fa-plus"></i> Aggiungi pizza</a>
-		</div>
+		
 	</div>
 	<div th:replace="/fragments/resources :: scripts"></div>
 </body>
