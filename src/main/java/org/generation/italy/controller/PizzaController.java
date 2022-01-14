@@ -32,12 +32,14 @@ public class PizzaController {
 	public String aggiungiPizza(Model model) {
 		model.addAttribute("pizza", new Pizza());
 		model.addAttribute("ingredienti", ingredientiService.findAllSortByIngredienti());
+		model.addAttribute("modifica", false);
 		return "/menu/aggiungipizza";
 	}
 	
 	@PostMapping("/aggiungipizza")
 	public String salvaPizza(@ModelAttribute("pizza") Pizza formPizza, Model model) {
 		service.salva(formPizza);
+		model.addAttribute("modifica", false);
 		return "redirect:/menu";
 	}
 	
@@ -45,12 +47,14 @@ public class PizzaController {
 	public String modifica(@PathVariable("id") Integer id, Model model) {
 		model.addAttribute("pizza", service.getById(id));
 		model.addAttribute("ingredienti", ingredientiService.findAllSortByIngredienti());
+		model.addAttribute("modifica", true);
 		return "/menu/aggiungipizza";
 	}
 	
 	@PostMapping("/modifica/{id}")
 	public String confermaModifica(@ModelAttribute("pizza") Pizza formPizza, Model model) {
 		service.modifica(formPizza);
+		model.addAttribute("modifica", true);
 		return "redirect:/menu";
 	}
 	

@@ -13,7 +13,7 @@
 		<hr>
 		<form id="pizza-form" 
 			 th:object="${pizza}" 
-			 th:action="@{/menu/aggiungipizza} ? @{/menu/modifica/{id}(id=${pizza.id})} : @{/menu/aggiungipizza}" 
+			 th:action="${modifica} ? @{/menu/modifica/{id}(id=${pizza.id})} : @{/menu/aggiungipizza}" 
 			 method="post"
 			 >
 			 <div class="row">
@@ -32,7 +32,8 @@
 					 		<input type="text" class="form-control" id="prezzo" th:field="*{prezzo}">
 					 	</div>
 					 	<div class="col-12">
-					 		<button class="btn btn-danger" type="submit">Salva</button>
+					 		<button class="btn btn-danger" type="submit"><i class="fas fa-save"></i> Salva</button>
+					 		<a class="btn btn-danger" th:href="@{/menu}"><i class="fas fa-long-arrow-alt-left"></i> Indietro</a>
 					 	</div>
 			 		</div>	
 			 	</div>

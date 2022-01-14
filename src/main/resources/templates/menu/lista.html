@@ -10,32 +10,23 @@
 <body>
 	<div class="container">
 		<h1>Le nostre pizze</h1>
-			<hr>
-		<table class="table table-borderless">
-				<thead>
-					<tr>
-						<th></th>
-						<th></th>
-						<th></th>
-						<th></th>
-					</tr>
-				</thead>
-			<tbody>
-				<tr th:each="item : ${pizza}">
-					<td th:text="${item.nome}"></td>
-					<td th:text="${item.ingredientiToString()}"></td>  
-					<td th:text="${item.prezzo}"></td>   
-					<td>
-					<a class="btn btn-danger" th:href="@{|/menu/modifica/${item.id}|}"><i class="fas fa-pencil-alt"></i></a>
-					<a class="btn btn-danger" th:href="@{|/menu/cancella/${item.id}|}"><i class="fas fa-trash-alt"></i></a>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<hr>
+        <div class="row" th:each="item : ${pizza}">
+	        <div class="col gy-2 d-inline" th:text="${item.nome}"></div>
+	        <div class="col gy-2 d-inline" th:text="${item.ingredientiToString()}"></div>
+	        <div class="col gy-2 d-inline" th:text="${item.prezzo} + &euro;"></div>
+	        <div class="col gy-2 d-inline">
+	            <a class="btn btn-danger" th:href="@{|/menu/modifica/${item.id}|}"><i class="fas fa-pencil-alt"></i></a>
+		        <a class="btn btn-danger" th:href="@{|/menu/cancella/${item.id}|}"><i class="fas fa-trash-alt"></i></a>
+	        </div>
+    </div>
 		<div>
-			 <a class="btn btn-danger" th:href="@{/menu/aggiungipizza}"><i class="fas fa-plus"></i></a>
+			 <a class="btn btn-danger" th:href="@{/menu/aggiungipizza}"><i class="fas fa-plus"></i> Aggiungi pizza</a>
 		</div>
 	</div>
 	<div th:replace="/fragments/resources :: scripts"></div>
 </body>
 </html>
+
+
+
