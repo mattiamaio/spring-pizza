@@ -4,9 +4,7 @@
     <div th:replace="/fragments/resources :: headTags"></div>
     <title>Menu</title>
 </head>
-<header>
-	<div class="container-fluid bg-danger pt-4 pb-5"></div>
-</header>
+<nav th:replace="fragments/navbar :: navbar('pizza')"></nav>
 <body>
 	<div class="container">
 		<h1 class="text-center">Le nostre pizze</h1>
@@ -28,8 +26,7 @@
 	            <a class="btn btn-danger" th:href="@{|/menu/modifica/${item.id}|}"><i class="fas fa-pencil-alt"></i></a>
 		        <a class="btn btn-danger" th:href="@{|/menu/cancella/${item.id}|}"><i class="fas fa-trash-alt"></i></a>
 	        </div>
-    </div>
-		
+    	</div>	
 	</div>
 	<div th:replace="/fragments/resources :: scripts"></div>
 </body>

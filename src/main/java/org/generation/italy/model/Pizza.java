@@ -72,7 +72,7 @@ public class Pizza {
 	
 	public String ingredientiToString() {
 		List<String> ingredientiString = new ArrayList<>();
-		for(Ingredienti i : ingredienti ) {
+		for(Ingredienti i : ingredienti) {
 			ingredientiString.add(i.getName());
 		}
 		return String.join(", ", ingredientiString);	

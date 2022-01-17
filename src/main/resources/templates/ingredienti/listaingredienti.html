@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <div th:replace="/fragments/resources :: headTags"></div>
+    <title>Menu</title>
+</head>
+<header><div class="container-fluid bg-danger pt-4 pb-5"></div></header>
+<h1>Ingredienti</h1>
+<div class="row" th:each="item : ${ingredienti}">
+	<div class="col" th:text="${item.name}"></div>
+</div>
+<body>
+</body>
+</html>

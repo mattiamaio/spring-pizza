@@ -26,7 +26,7 @@ public class PizzaController {
 	private IngredientiService ingredientiService;
 	
 	@GetMapping
-	public String list(Model model, @RequestParam(name="keyword", required=false) String keyword ) {
+	public String list(Model model, @RequestParam(name="keyword", required=false) String keyword) {
 		List<Pizza> risultato;
 		if(keyword != null && !keyword.isEmpty()) {
 			risultato = service.findByKeyword(keyword);
